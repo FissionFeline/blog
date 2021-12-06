@@ -1,0 +1,16 @@
+{
+  "name": "proveworth",
+  "version": "1.0.0",
+  "description": "You know",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Furiozs Feline",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express.js": "^1.0.0"
+  }
+}
