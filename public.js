@@ -9,7 +9,7 @@ module.exports = (function() {
         if (req.params.type == 0) {
             next('route');
         }
-        res.send(`You gave us ${req.params.type}`)
+        res.send(`You gave us ${req.params.type} ${req.params.user}`)
     });
 
     route.get('/:user/', function(req, res, next) {
