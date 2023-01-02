@@ -1,10 +1,11 @@
 const express = require('express');
 const app = express();
-const routing = require("./routing_sys.js");
+const public = require('./public')
 require('dotenv').config()
 const db = require("./db_handler")
 
-app.use('', routing)
+
+app.use('articles/', routing)
 
 app.listen(process.env.PORT, function() {
     console.log(`App is running on ${process.env.PORT}`);
