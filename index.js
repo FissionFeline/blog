@@ -3,9 +3,11 @@ const app = express();
 const public = require('./public')
 require('dotenv').config()
 const db = require("./db_handler")
-
+const admin = require('./admin')
 
 app.use('articles/', routing)
+
+app.use('edit/', admin)
 
 app.listen(process.env.PORT, function() {
     console.log(`App is running on ${process.env.PORT}`);
