@@ -1,8 +1,10 @@
 const { MongoClient } = require("mongodb");
+require('dotenv').config()
 
 class mongo_connection {
-  constructur(con_str) {
-   this.connection = new MongoClient(con_str) 
-    
-  }
+    constructor() {
+        const mongo = new MongoClient(process.env.MLINK);
+    }
 }
+
+module.exports = new mongo_connection()
