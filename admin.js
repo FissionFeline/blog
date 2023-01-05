@@ -1,3 +1,5 @@
+const db = require('./db_handler')
+
 module.exports = (function() {
     var route = require('express').Router();
 
@@ -6,16 +8,10 @@ module.exports = (function() {
     });
 
     route.get('/:user/:type', function(req, res, next) {
-        if (req.params.type == 0) {
-            next('route');
-        }
         res.send(`You gave us ${req.params.type} ${req.params.user}`)
     });
 
     route.get('/:user/', function(req, res, next) {
-        if (req.params.type == 0) {
-            next('route');
-        }
         res.send(`You gave us ${req.params.user}`)
     });
     route.use((req, res, next) => {
