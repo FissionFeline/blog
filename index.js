@@ -1,13 +1,34 @@
 const express = require('express');
+const helmet = require('helmet');
 const app = express();
-const public = require('./public')
+const public_route = require('./public')
 require('dotenv').config()
 const db = require("./db_handler")
 const admin = require('./admin')
+const bodyParser = require('body-parser')
+const ejs = require("ejs")
+const cookieParser = require('cookie-parser')
+const session = require('express-session')
 
-app.use('/articles/', public)
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
+
+app.set('view engine', 'ejs');
+app.use(session({
+    resave: true,
+    saveUninitialized: true,
+    secret: process.env.SECRET,
+}));
+app.use('/articles/', public_route)
 
 app.use('/edit/', admin)
+
+app.use(helmet())
+app.set('host', process.env.IP || '127.0.0.1');
+app.set('port', process.env.PORT || 2222);
+app.disable('x-powered-by');
 
 app.listen(process.env.PORT, function() {
     console.log(`App is running on ${process.env.PORT}`);
