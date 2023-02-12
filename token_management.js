@@ -1,17 +1,19 @@
-const jwt = require("jwt")
+const jwt = require("jsonwebtoken")
+
+require('dotenv').config()
+
+
 const generate_token = (ID) => {
-    return jwt.sign(ID, process.env.SECRET, { expiresIn: '1800s' });
+    return jwt.sign({ ID: ID }, process.env.SECRET, { expiresIn: '60d' });
 };
 
 const verify_token = (token) => {
-    jwt.verify(token, process.env.SECRET, (err, ID) => {
-
-        if (err) return [err, null]
-
-        if (ID) return [null, err]
-
-        return ["Unknown error", null]
-    })
+    try {
+        const result = jwt.verify(token, process.env.SECRET)
+        return [null, result]
+    } catch {
+        return ["failed", null]
+    }
 }
 
 module.exports = {
