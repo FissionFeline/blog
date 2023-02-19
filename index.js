@@ -10,6 +10,10 @@ const ejs = require("ejs")
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
 
+const auth = (req, res, next) => {
+    console.log("here")
+    next()
+}
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -23,7 +27,7 @@ app.use(session({
 }));
 app.use('/articles/', public_route)
 
-app.use('/edit/', admin)
+app.use('/edit/', auth, admin)
 
 app.use(helmet())
 app.set('host', process.env.IP || '127.0.0.1');
