@@ -1,10 +1,10 @@
 const express = require('express');
 const helmet = require('helmet');
 const app = express();
-const public_route = require('./public')
+const public_route = require('./routes/public')
 require('dotenv').config()
 const db = require("./db_handler")
-const admin = require('./admin')
+const admin = require('./routes/admin')
 const bodyParser = require('body-parser')
 const ejs = require("ejs")
 const cookieParser = require('cookie-parser')
