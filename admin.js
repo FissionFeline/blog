@@ -19,6 +19,7 @@ module.exports = (function() {
 
     })
 
+    route.post('create', function(req, res, next) {})
 
     return route
 })();
