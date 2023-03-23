@@ -7,5 +7,13 @@ module.exports = (function() {
 
     })
 
+    route.get('/create', function(req, res, next) {
+
+    })
+
+    route.get('/edit/:article', function(req, res, next) {
+
+    })
+
     return route
 })();
