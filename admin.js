@@ -11,9 +11,14 @@ module.exports = (function() {
 
     })
 
-    route.get('/edit/:article', function(req, res, next) {
+    route.patch('/edit/:article', function(req, res, next) {
 
     })
+
+    route.delete('/edit/:article', function(req, res, next) {
+
+    })
+
 
     return route
 })();
