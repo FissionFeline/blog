@@ -7,10 +7,6 @@ module.exports = (function() {
 
     })
 
-    route.get('/create', function(req, res, next) {
-
-    })
-
     route.patch('/edit/:article', function(req, res, next) {
 
     })
@@ -19,7 +15,7 @@ module.exports = (function() {
 
     })
 
-    route.post('create', function(req, res, next) {})
+    route.post('/create', function(req, res, next) {})
 
     return route
 })();
