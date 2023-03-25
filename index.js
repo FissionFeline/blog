@@ -9,6 +9,7 @@ const bodyParser = require('body-parser')
 const ejs = require("ejs")
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
+const jwt = require("./utils/token_management")
 
 const auth = (req, res, next) => {
     const token = req.get("jwt")
