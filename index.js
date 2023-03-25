@@ -11,8 +11,15 @@ const cookieParser = require('cookie-parser')
 const session = require('express-session')
 
 const auth = (req, res, next) => {
-    console.log("here")
-    next()
+    const token = req.get("jwt")
+    if (!token) return res.send("No JWT send!")
+    const validation = jwt.verify_token(token)
+    if (validation[0] == 'failed') {
+        return res.status(400).send({ Success: false, Message: "Youre not logged in!" });
+    }
+    if (validation[1]) {
+        next()
+    }
 }
 
 app.use(bodyParser.json());
@@ -27,7 +34,7 @@ app.use(session({
 }));
 app.use('/articles/', public_route)
 
-app.use('/edit/', auth, admin)
+app.use('/admin/', auth, admin)
 
 app.use(helmet())
 app.set('host', process.env.IP || '127.0.0.1');
