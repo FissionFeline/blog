@@ -1,4 +1,4 @@
-const db = require('../db_handler.js');
+const db = require('../utils/db_handler.js');
 const ObjectId = require('mongodb').ObjectId;
 module.exports = (function() {
     var route = require('express').Router();
