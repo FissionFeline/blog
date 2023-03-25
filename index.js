@@ -13,7 +13,7 @@ const jwt = require("./utils/token_management")
 
 const auth = (req, res, next) => {
     const token = req.get("jwt")
-    if (!token) return res.send("No JWT send!")
+    if (!token) return res.status(400).send({ Success: false, Message: "Youre not logged in!" });
     const validation = jwt.verify_token(token)
     if (validation[0] == 'failed') {
         return res.status(400).send({ Success: false, Message: "Youre not logged in!" });
